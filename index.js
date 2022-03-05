@@ -13,10 +13,11 @@ client.on("message", msg => {
         msg.reply("hi there")
     } else if (msg.content === "u good bro") {
         msg.channel.send("nah")
-    } else if (msg.content === "rtn is epic") {
+    } else if (msg.content === "gzemel is epic") {
         msg.react("❤️")
     }
     else if (msg.content === "gimme mod") {
+        msg.reply("Applying mod role...")
         msg.member.roles.add("873405376345813024");
         }
 })
