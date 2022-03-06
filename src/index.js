@@ -28,6 +28,7 @@ const Collect = require("./collect")
     * })
     * 
     * // other code here
+    * 
 */
 
 
