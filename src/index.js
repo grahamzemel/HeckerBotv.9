@@ -1,7 +1,7 @@
 const shuffle = require("shuffle-array")
 const games = new Set();
 const Discord = require("discord.js");
-const Collect = require("./collect")
+const Collect = require("./Collect")
 
 /** 
     * @param {Discord.Message || Discord.CommandInteraction} message The Message Object or the Interaction Object sent by the user
