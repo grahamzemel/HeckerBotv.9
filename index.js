@@ -1,17 +1,14 @@
 (require("dotenv")).config();
 const Discord = require('discord.js');
-
 module.exports = require("./src/index.js");
-
-
+const fs = require('fs');
+const path = require('path');
+const prefix = "-";
 const client = new Discord.Client({
     partials: ['MESSAGE'],
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"]
 });
-const fs = require('fs');
-const path = require('path');
 
-const prefix = "-";
 
 
 client.commands = new Discord.Collection();
