@@ -2,6 +2,12 @@ const shuffle = require("shuffle-array")
 const games = new Set();
 const Discord = require("discord.js");
 const Collect = require("./Collect")
+/**
+ * @author Silent-Coder
+ * @license Apache-2.0
+ * @copyright Silent-Coder
+ * @file index.js
+ */
 
 /** 
     * @param {Discord.Message || Discord.CommandInteraction} message The Message Object or the Interaction Object sent by the user

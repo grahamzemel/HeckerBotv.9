@@ -1,13 +1,18 @@
 (require("dotenv")).config();
 const Discord = require('discord.js');
-module.exports = require("./src/index.js");
 const fs = require('fs');
 const path = require('path');
+const money = require('discord-money');
 const prefix = "-";
+
 const client = new Discord.Client({
     partials: ['MESSAGE'],
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"]
 });
+
+module.exports = require("./src/index.js");
+
+
 
 
 
@@ -33,11 +38,11 @@ client.on("messageCreate", async function (message) {
         const commandBody = message.content.slice(prefix.length);
         const args = commandBody.split(' ');
         let command = client.commands.get(args[0]);
-        
+
         Array.from(client.commands.keys());
         for (let i = 0; i < [...client.commands.keys()].length; i++) {
             // console.log(command.name === [...client.commands.keys()][i]);
-            if(command == undefined){
+            if (command == undefined) {
                 message.reply("Not valid command!")
                 break;
             }
@@ -53,5 +58,4 @@ client.on("messageCreate", async function (message) {
     }
 }
 )
-
 client.login(process.env.DISCORD_TOKEN);
