@@ -2,6 +2,7 @@ const shuffle = require("shuffle-array")
 const games = new Set();
 const Discord = require("discord.js");
 const Collect = require("./Collect")
+
 /**
  * @author Silent-Coder
  * @license Apache-2.0
@@ -319,6 +320,7 @@ module.exports = async (message, options) => {
             winEmbed.fields.push({ name: "Your hand", value: `Cards: [\`${yourcards[0].emoji} ${yourcards[0].rank}\`](https://google.com) [\`${yourcards[1].emoji} ${yourcards[1].rank}\`](https://google.com)\nTotal: ${yourvalue}` })
             winEmbed.fields.push({ name: "Dealer's hand", value: `Card: [\`${dealercards[0].emoji} ${dealercards[0].rank}\`](https://google.com) [\`${dealercards[1].emoji} ${dealercards[1].rank}\`](https://google.com)\nTotal: ${dealervalue}` })
             commandType === "message" ? message.channel.send({ embeds: [winEmbed] }) : message.channel.send({ embeds: [winEmbed] })
+ 
         }
 
         return {
@@ -326,24 +328,26 @@ module.exports = async (message, options) => {
             method: "You won with blackjack.",
             ycard: yourcards,
             dcard: dealercards
+            
         }
+        
     }
 
-    // else if (dealervalue === 21 && yourvalue != 21) {
-    //     if (options.resultEmbed === true) {
-    //         loseEmbed.description = "You lost (dealer had blackjack)."
-    //         loseEmbed.fields.push({ name: "Your hand", value: `Cards: [\`${yourcards[0].emoji} ${yourcards[0].rank}\`](https://google.com) [\`${yourcards[1].emoji} ${yourcards[1].rank}\`](https://google.com)\nTotal: ${yourvalue}` })
-    //         loseEmbed.fields.push({ name: "Dealer's hand", value: `Cards: [\`${dealercards[0].emoji} ${dealercards[0].rank}\`](https://google.com) [\`${dealercards[1].emoji} ${dealercards[1].rank}\`](https://google.com)\nTotal: ${dealervalue}` })
-    //         commandType === "message" ? message.channel.send({ embeds: [loseEmbed] }) : message.channel.send({ embeds: [loseEmbed] })
-    //     }
+    else if (dealervalue === 21 && yourvalue != 21) {
+        if (options.resultEmbed === true) {
+            loseEmbed.description = "You lost (dealer had blackjack)."
+            loseEmbed.fields.push({ name: "Your hand", value: `Cards: [\`${yourcards[0].emoji} ${yourcards[0].rank}\`](https://google.com) [\`${yourcards[1].emoji} ${yourcards[1].rank}\`](https://google.com)\nTotal: ${yourvalue}` })
+            loseEmbed.fields.push({ name: "Dealer's hand", value: `Cards: [\`${dealercards[0].emoji} ${dealercards[0].rank}\`](https://google.com) [\`${dealercards[1].emoji} ${dealercards[1].rank}\`](https://google.com)\nTotal: ${dealervalue}` })
+            commandType === "message" ? message.channel.send({ embeds: [loseEmbed] }) : message.channel.send({ embeds: [loseEmbed] })
+        }
 
-    //     return {
-    //         result: "LOSE",
-    //         method: "You lost (dealer had blackjack).",
-    //         ycard: yourcards,
-    //         dcard: dealercards
-    //     }
-    // }
+        return {
+            result: "LOSE",
+            method: "You lost (dealer had blackjack).",
+            ycard: yourcards,
+            dcard: dealercards
+        }
+    }
 
     else if (dealervalue === 21 && dealervalue == yourvalue) {
         if (options.resultEmbed === true) {
