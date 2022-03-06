@@ -36,8 +36,21 @@ client.on("messageCreate", async function (message) {
         const commandBody = message.content.slice(prefix.length);
         const args = commandBody.split(' ');
         let command = client.commands.get(args[0]);
-        client.commands.get(command.name).execute(Discord, client, message, args);
         
+        Array.from(client.commands.keys());
+        for (let i = 0; i < [...client.commands.keys()].length; i++) {
+            // console.log(command.name === [...client.commands.keys()][i]);
+            if(command == undefined){
+                message.reply("Not valid command!")
+                break;
+            }
+            else if (command.hasOwnProperty('name')) {
+                client.commands.get(command.name).execute(Discord, client, message, args);
+                break;
+            }
+
+
+        }
 
 
     }
