@@ -35,5 +35,5 @@ function playSlots(){
 
     const machine = new SlotMachine(3, [cherry, money, wild]);
     const results = machine.play();
-    return results.totalPoints + "\n" + results.visualize(true);
+    return results.totalPoints + "\n" + results.visualize(false);
 }
