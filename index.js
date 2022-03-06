@@ -1,5 +1,9 @@
 (require("dotenv")).config();
 const Discord = require('discord.js');
+
+module.exports = require("./src/index.js");
+
+
 const client = new Discord.Client({
     partials: ['MESSAGE'],
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"]
@@ -19,8 +23,10 @@ for (const file of files) {
     console.log(`👌 Command loaded: ${commandName}`);
 }
 
-client.once('ready', async () => {
+client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setActivity("Skinny Turtles#5811", { type: "PLAYING" });
+
 });
 
 
@@ -31,8 +37,10 @@ client.on("messageCreate", async function (message) {
         const args = commandBody.split(' ');
         let command = client.commands.get(args[0]);
         client.commands.get(command.name).execute(Discord, client, message, args);
-    }
+        
 
+
+    }
 }
 )
 
