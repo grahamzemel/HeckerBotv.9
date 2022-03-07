@@ -14,8 +14,6 @@ module.exports = require("./src/index.js");
 
 
 
-
-
 client.commands = new Discord.Collection();
 const files = fs.readdirSync(path.join(__dirname, "commands"));
 for (const file of files) {
